@@ -4,17 +4,116 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Hean from heanlab.com" />
+    <meta name="description" content="La maison de la santé saint-paul est un centre de santé communnautaire situé dans la ville de Yaoundé et né d'un partenariat belgo-camerounais entre l'ASBL belge 'Maison de la santé Saint-Paul' située à Jette, et M. ABA'A Evoundou Raymond. Le centre a pour but de rendre les soins de santé accéssibles en pratiquant une politique de proximité.">
+    <meta  name="apple-mobile-web-app-title" content="Maison de la santé saint-Paul"/>
+    <meta name="application-name" content="Votre Maison Saint-Paul"/>
+    <meta  name="keywords" content="MSSP, Maison de la santé, Maison de la santé saint-paul, Saint-Paul Yaoundé, Clinique Yaoundé, maison clinique "/>
     <base href="/" />
    
     <link rel="stylesheet" href="app.css" />
     <link rel="stylesheet" href="mssp_application.style.css" />
-    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <script src="./js/three.js/three.min.js"> </script>
+    <script src="./js/vanta/vanta.birds.min.js"> </script>
+    
     <HeadOutlet />
 </head>
 
-<body>
+<body id="body">
     <Routes />
+
+    <!--Footer-->
+    <div id="foot">
+        <div class="contacts">
+            <span class="subtitle"> Maison de la Santé Saint-Paul</span>
+            <img src="/images/logo.png" />
+            <div class="left">
+                
+                <div class="infos">
+                        <span> Rue Saint-Paul 3</span>
+                        <span> Essos -Yaoundé</span>
+                        <span>Cameroun</span>
+                        
+
+                </div>
+                <div class="infos">
+                    <a href="tel:+237699819582"> Tel. +237 699 81 95 82</a>
+                    <a> Tel. +237 679 28 17 78</a>
+                    <a href="mailto:info@maison-saintpaul.com">Mail. maison-saintpaul.com</a>
+                </div>
+            </div>
+            <div class="right">
+                <div class="btn_red">
+                    <span>Faites un don à la maison Saint-Paul</span>
+                </div>
+                <div class="btn_white">
+                    Un job ou un stage à Saint-Paul?
+                 </div>
+            </div>
+
+        </div>
+        <div class="up">
+            <img src="./images/logo.png" />
+            <div class="inside_links">
+                <NavLink class="link active" href="Accueil" Match="NavLinkMatch.All">
+                    <span aria-hidden="true">Accueil</span>
+                </NavLink>
+                <NavLink class="link active" href="A propos" Match="NavLinkMatch.All">
+                    <span aria-hidden="true">A Propos</span>
+                </NavLink>
+            </div>
+            <div class="external_links">
+<a href="https://www.facebook.com/maisondelasantesaintpaul" target="_blank">
+                    <img src="./images/facebook.svg" />
+                </a>
+                <a href="https://www.linkedin.com/company/maison-de-la-sant%C3%A9-saint-paul" target="_blank">
+                    <img src="./images/linkedin.svg" />
+                </a>
+            </div>
+        </div>
+       <div class="down">
+           <div class="left">
+            <span>© @year  Maison de la santé Saint-Paul</span>
+            <a href="#">Termes</a>
+            <a href="#">Confidentialité</a>
+            <a href="#">Cookies</a>
+           </div>
+           <div class="right">
+                <a href="#">Mentions légales</a>
+                <a href="#">Contact</a>
+           </div>
+       </div>
+       
+    </div>
+    @code{
+        // Get year
+        static string[] m = new string[] { "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Decembre" };
+
+        public string year = m[DateTime.Now.Month - 1] +" "+ DateTime.Now.Year.ToString() + " - ";
+
+    }
     <script src="_framework/blazor.web.js"></script>
+    <script>
+        VANTA.BIRDS({
+            el: "#body",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            backgroundColor: 0xf7f9ff,
+            color1: 0xc3a9c,
+            color2: 0x2345ae,
+            colorMode: "lerpGradient",
+            birdSize: 0.90,
+            speedLimit: 7.00,
+            cohesion: 61.00
+        })
+    </script>
+    <script src="./js/vanilla-tilt/vanilla-tilt.min.js"> </script>
 </body>
 
 </html>
