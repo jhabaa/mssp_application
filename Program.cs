@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 //Launch app on port 5010
-builder.WebHost.UseUrls("http://localhost:5010");
+builder.WebHost.UseUrls("http://0.0.0.0:5010");
 
 var app = builder.Build();
 
