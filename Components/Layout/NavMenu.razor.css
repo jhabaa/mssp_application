@@ -1,8 +1,6 @@
-.bar {
-  background-color: black;
-}
-.bar .links {
-  background-color: red;
+.navbar .bar{
+    background-color:red !important;
+    height:100px;
 }
 
 /*# sourceMappingURL=NavMenu.razor.css.map */

@@ -1,21 +1,8 @@
-.page {
-  margin: 0px;
-  background-color: ghostwhite;
-  min-height: 100vh;
-  padding-bottom: 56px;
-  display: flex;
-  flex-direction: column;
-}
-@media (min-width: 768px) {
-  .page {
-    padding-bottom: 64px;
-  }
-}
-.page .topbar {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  background-color: red;
+﻿.page{
+    background-color:red;
 }
 
-/*# sourceMappingURL=MainLayout.razor.css.map */
+.topbar{
+    background-color:blue;
+    height:100px;
+}

@@ -1,0 +1,21 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "vanta@0.5.24",
+      "destination": "wwwroot/js/vanta/",
+      "files": [
+        "vanta.birds.min.js"
+      ]
+    },
+    {
+      "library": "three.js@r134",
+      "destination": "wwwroot/js/three.js/"
+    },
+    {
+      "library": "vanilla-tilt@1.8.1",
+      "destination": "wwwroot/js/vanilla-tilt/"
+    }
+  ]
+}

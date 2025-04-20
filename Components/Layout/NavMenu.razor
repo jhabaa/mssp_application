@@ -1,23 +1,24 @@
-﻿<nav class="bar">
+﻿<nav id="bar">
     <div class="icon">
-        <img src="./images/logo2.png" />
+        <img src="./images/Logo St Paul.png" />
     </div>
     <div class="links">
-        <NavLink class="link active" href="Accueil" Match="NavLinkMatch.All">
+        <NavLink class="link" href="Accueil" Match="NavLinkMatch.Prefix">
             <span aria-hidden="true">Accueil</span>
         </NavLink>
-        <NavLink class="link active" href="A propos" Match="NavLinkMatch.All">
+        <NavLink class="link" href="A propos" Match="NavLinkMatch.All">
             <span aria-hidden="true">A Propos</span>
         </NavLink>
+        <NavLink class="link" href="Services" Match="NavLinkMatch.All">
+            <span aria-hidden="true">Services</span>
+        </NavLink>
+    </div>
+
+    <div id="burger">
+          <div></div>
+          <div></div>
     </div>
     
-    <div class="user">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-        </svg>
-        <span>Bonjour Hean</span>
-        <NavLink class="btn" href="connexion">Se connecter</NavLink>
-    </div>
 
 </nav>
 
