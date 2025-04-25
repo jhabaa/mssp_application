@@ -22,76 +22,7 @@
 <body id="body">
     <Routes />
 
-    <!--Footer-->
-    <div id="foot">
-        <div class="contacts">
-            <span class="subtitle"> Maison de la Santé Saint-Paul</span>
-            <img src="/images/logo.png" />
-            <div class="left">
-                
-                <div class="infos">
-                        <span> Rue Saint-Paul 3</span>
-                        <span> Essos -Yaoundé</span>
-                        <span>Cameroun</span>
-                        
 
-                </div>
-                <div class="infos">
-                    <a href="tel:+237699819582"> Tel. +237 699 81 95 82</a>
-                    <a> Tel. +237 679 28 17 78</a>
-                    <a href="mailto:info@maison-saintpaul.com">Mail. maison-saintpaul.com</a>
-                </div>
-            </div>
-            <div class="right">
-                <div class="btn_red">
-                    <span>Faites un don à la maison Saint-Paul</span>
-                </div>
-                <div class="btn_white">
-                    Un job ou un stage à Saint-Paul?
-                 </div>
-            </div>
-
-        </div>
-        <div class="up">
-            <img src="./images/logo.png" />
-            <div class="inside_links">
-                <NavLink class="link active" href="Accueil" Match="NavLinkMatch.All">
-                    <span aria-hidden="true">Accueil</span>
-                </NavLink>
-                <NavLink class="link active" href="A propos" Match="NavLinkMatch.All">
-                    <span aria-hidden="true">A Propos</span>
-                </NavLink>
-            </div>
-            <div class="external_links">
-<a href="https://www.facebook.com/maisondelasantesaintpaul" target="_blank">
-                    <img src="./images/facebook.svg" />
-                </a>
-                <a href="https://www.linkedin.com/company/maison-de-la-sant%C3%A9-saint-paul" target="_blank">
-                    <img src="./images/linkedin.svg" />
-                </a>
-            </div>
-        </div>
-       <div class="down">
-           <div class="left">
-            <span>© @year  Maison de la santé Saint-Paul</span>
-            <a href="#">Termes</a>
-            <a href="#">Confidentialité</a>
-            <a href="#">Cookies</a>
-           </div>
-           <div class="right">
-                <a href="#">Mentions légales</a>
-                <a href="#">Contact</a>
-           </div>
-       </div>
-       
-    </div>
-    @code{
-        // Get year
-        static string[] m = new string[] { "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Decembre" };
-
-        public string year = m[DateTime.Now.Month - 1] +" "+ DateTime.Now.Year.ToString() + " - ";
-
-    }
     <script src="_framework/blazor.web.js"></script>
 </body>
 

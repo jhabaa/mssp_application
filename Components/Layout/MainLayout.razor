@@ -3,28 +3,165 @@
 <div class="page">
     <div class="topbar">
         <div id="nav_header">
-            <div class="news">Breaking news </div>
+            <div class="news" id="news_screen">
+                <div class="news-text" id="news"> Breaking news</div>
+                
+            </div>
             <div class="nav_contact">
                 <span> Contacts:</span>
                 <span> +237 6 99 81 95 82 </span>
                 |
                 <span> +237 6 79 28 17 78 </span>
             </div>
-            <div id="lang_bar">
+            @* <div id="lang_bar">
                 <span>Langue</span>
                 <div id="lang_selector">
 
                 </div>
-            </div>
+            </div> *@
         </div>
         <NavMenu />
     </div>
-
+    <img src="/images/img1.jpg" alt="background1" class="background" id="background_home_mobile"/>
+    <div class="background_overlay"></div>
+    <div id="background_compact"></div>
     <main>
         <article>
             @Body
         </article>
     </main>
 
+        <!--Footer-->
+    <footer id="foot">
+        <div class="contacts">
+            <span class="title"> Maison de la Santé Saint-Paul</span>
+            <img src="/images/logo.png" />
+            <div class="left">
+                
+                <div class="infos">
+                        <span> Rue Saint-Paul 3</span>
+                        <span> Essos -Yaoundé</span>
+                        <span>Cameroun</span>
+                        
+
+                </div>
+                <div class="infos">
+                    <a href="tel:+237699819582"> Tel: +237 699 81 95 82</a>
+                    <a href="tel:+237679281778"> Tel: +237 679 28 17 78</a>
+                    <a href="mailto:info@maison-saintpaul.com">Nous écrire</a>
+                </div>
+            </div>
+            <div class="right">
+                <div class="btn red">
+                    <span>Faites un don à la maison Saint-Paul</span>
+                </div>
+                <div class="btn white">
+                    Un job ou un stage à Saint-Paul?
+                 </div>
+            </div>
+
+        </div>
+        <div class="up">
+            <div class="links">
+                <NavLink class="link" href="Accueil" Match="NavLinkMatch.All">
+                    <span aria-hidden="true">Accueil</span>
+                </NavLink>
+                <NavLink class="link" href="A propos" Match="NavLinkMatch.All">
+                    <span aria-hidden="true">A Propos</span>
+                </NavLink>
+            </div>
+            <div class="external">
+                <a href="https://www.facebook.com/maisondelasantesaintpaul" target="_blank">
+                    <img src="./images/facebook.svg" />
+                </a>
+                <a href="https://www.linkedin.com/company/maison-de-la-sant%C3%A9-saint-paul" target="_blank">
+                    <img src="./images/linkedin.svg" />
+                </a>
+            </div>
+        </div>
+       <div class="down">
+            <span>© @year  Maison de la santé Saint-Paul</span>
+            <div>
+            <a href="#">Termes</a>
+            <a href="#">Confidentialité</a>
+            <a href="#">Cookies</a>
+            <a href="#">Mentions légales</a>
+            <a href="#">Contact</a>
+           </div>
+                
+       </div>
+       
+    </footer>
+
+
     
 </div>
+<script>
+    let news_screen = document.getElementById("news");
+    const getNews = async () => {
+        const response = await fetch("https://www.who.int/api/news/healthtopics");
+        const data = await response.json();
+        console.log(data.value);
+        const news = data.value.map(item => {
+            return {
+                // Extract the relevant information from the item by removing the HTML tags
+                title: item.Tab1Summary.replace(/<[^>]+>/g, "").trim()
+            };
+        });
+        return news;
+    };
+    if (news_screen){
+        getNews().then(news => {
+            // Display the news in the news_screen element one by one
+            let index = 0;
+            const displayNews = () => {
+                if (index < news.length) {
+                    news_screen.innerHTML = news[index].title;
+                    index++;
+                    setTimeout(displayNews, 5000); // Change news every 5 seconds
+                } else {
+                    index = 0; // Reset index to loop through the news again
+                    setTimeout(displayNews, 5000);
+                }
+            };
+            displayNews();
+            moveNewsScreen(10); // Move the news screen to the left
+        }).catch(error => {
+            console.error("Error fetching news:", error);
+        })
+    }
+
+    // Async Function to move the news screen to the left acccording to a given time 
+    const moveNewsScreen = async (time) => {
+        let news_screen = document.getElementById("news");
+        let screenWidth = window.innerWidth;
+        let screenHeight = window.innerHeight;
+        let leftPosition = screenWidth;
+        let topPosition = screenHeight / 2 - news_screen.offsetHeight / 2;
+
+        news_screen.style.left = leftPosition + "px";
+
+        while (leftPosition > -news_screen.offsetWidth) {
+            leftPosition -= 1; // Move left by 1 pixel
+            news_screen.style.left = leftPosition + "px";
+            await new Promise(resolve => setTimeout(resolve, time));
+        }
+    };
+
+
+    let background_compact = document.getElementById("background_compact");
+    window.addEventListener("scroll", () => {
+        let scrollTop = window.scrollY;
+        let screenHeight = window.innerHeight;
+        let scrollPercent = scrollTop / (document.body.scrollHeight - screenHeight);
+        background_compact.style.opacity = 0.5 + scrollPercent;
+    });
+
+</script>
+@code{
+    // Get year
+    static string[] m = new string[] { "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Decembre" };
+
+    public string year = m[DateTime.Now.Month - 1] +" "+ DateTime.Now.Year.ToString() + " - ";
+
+}
