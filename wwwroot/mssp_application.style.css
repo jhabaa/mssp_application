@@ -317,15 +317,14 @@ footer .up .external img{
     height: 30px;
     object-fit: cover;
 }
-footer .down {
-    background-color: var(--mssp-blue);
-    color: var(--secondary-text-color);
-    display: flex;
-    flex-flow: column wrap;
-    gap: 20px;
-}
+    footer .down {
+        color: var(--primary-text-color);
+        display: flex;
+        flex-flow: column wrap;
+        gap: 20px;
+    }
 footer .down a {
-    color: var(--secondary-text-color);
+    color: var(--primary-text-color);
 }
 footer .down > div{
     display: flex;
@@ -403,19 +402,25 @@ footer .title{
     justify-content: center;
     align-items: center;
 }
-.presentation.onepage{
+.presentation.onepage {
     height: 100vh;
-    flex-flow: row nowrap;
+    display:flex;
+    justify-content:space-evenly;
 }
 .presentation .top{
     width: 100%;
-    max-width: 800px;
+    max-width: 1400px;
 }
 .presentation .top > span{
+    display:flex;
+    justify-content: center;
+    align-items: center;
     font-size: 8.5ch;
     color: var(--mssp-blue);
     font-weight: 600;
     text-align: center;
+    text-justify:inter-character;
+    width:100%;
 }
 .presentation .bottom{
     display: flex;
