@@ -406,10 +406,14 @@ footer .title{
     height: 100vh;
     display:flex;
     justify-content:space-evenly;
+    gap:150px;
 }
 .presentation .top{
     width: 100%;
+    display:flex;
+    flex-flow:column nowrap;
     max-width: 1400px;
+    align-items:center;
 }
 .presentation .top > span{
     display:flex;
@@ -417,15 +421,25 @@ footer .title{
     align-items: center;
     font-size: 8.5ch;
     color: var(--mssp-blue);
-    font-weight: 600;
+    font-weight: 400;
     text-align: center;
     text-justify:inter-character;
     width:100%;
 }
+
+.presentation .top > h6{
+    font-size: 3ch;
+    opacity: .3;
+    font-weight:300;
+    text-align:center;
+
+}
 .presentation .bottom{
     display: flex;
     justify-content: center;
+    flex-flow: row wrap;
     align-items: end;
+    gap:50px;
     width: 100%;
     padding:10px;
 }
@@ -442,6 +456,18 @@ footer .title{
     backdrop-filter: blur(1rem);
     border-radius: 50px;
     padding: 20px;
+    overflow:hidden;
+}
+.presentation .bloc.blue::after{
+    content:"";
+    position:absolute;
+    top:0px;
+    left:0px;
+    width:100%;
+    height:100%;
+    background-color:var(--mssp-blue);
+    opacity:.2;
+    z-index:-1;
 }
 
 /* !!!!!!!!!!!!!!!!!!!!!!!   Adaptions for maobile  !!!!!!!!!!!!!!!!!!!!!!!!!!! */
@@ -487,9 +513,9 @@ footer .title{
         max-width: 800px;
     }
     .presentation .top > span{
-        font-size: 4.5ch;
+        font-size: 5.5ch;
         color: var(--mssp-blue);
-        font-weight: 600;
+        font-weight: 500;
         text-align: center;
     }
     .presentation .bottom{
@@ -514,5 +540,8 @@ footer .title{
         padding: 20px;
     }
 
+    .presentation.onepage{
+        height:fit-content;
+    }
 
 }
