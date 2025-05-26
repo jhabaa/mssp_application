@@ -544,4 +544,11 @@ footer .title{
         height:fit-content;
     }
 
+    .banc{
+        display:flex;
+        flex-flow: row wrap;
+        gap: 40px;
+        align-items:center;
+        justify-content:center;
+    }
 }
