@@ -11,7 +11,6 @@ builder.Services.AddRazorComponents()
 builder.Services.AddSingleton<MongoConnection>();
 //Launch app on port 5010
 builder.WebHost.UseUrls("http://0.0.0.0:5010");
-
 var app = builder.Build();
 
 // Load secrets from environment variables
@@ -20,8 +19,6 @@ builder.Configuration.AddUserSecrets<Program>(optional: true);
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
-    // Load secrets from environment variables
-    builder.Configuration.AddUserSecrets<Program>(optional: true);
     app.UseExceptionHandler("/Error", createScopeForErrors: true);
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
