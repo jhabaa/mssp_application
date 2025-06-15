@@ -414,6 +414,7 @@ footer .title{
     flex-flow:column nowrap;
     max-width: 1400px;
     align-items:center;
+    padding-top: calc(2vh + 60px);
 }
 .presentation .top > span{
     display:flex;
