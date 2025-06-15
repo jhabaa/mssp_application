@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using mssp_application.Components;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -5,6 +6,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+// Add Mongo DB conneection & datas as a singleton service. 
+// Then you can inject it into your components or pages.
+builder.Services.AddSingleton<MongoConnection>();
 //Launch app on port 5010
 builder.WebHost.UseUrls("http://0.0.0.0:5010");
 
