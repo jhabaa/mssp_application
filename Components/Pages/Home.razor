@@ -1,5 +1,7 @@
 ﻿@page "/"
 @page "/Accueil"
+@inject IConfiguration Configuration
+@using mssp_application.Components.Layout
 
 <PageTitle>Home</PageTitle>
 
@@ -38,4 +40,8 @@
         </div>
     </div>
 
+    <!-- #Activities -->
+    <Activity></Activity>
 </section>
+@code {
+}
