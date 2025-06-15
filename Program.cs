@@ -14,6 +14,8 @@ builder.WebHost.UseUrls("http://0.0.0.0:5010");
 
 var app = builder.Build();
 
+// Load secrets from environment variables
+builder.Configuration.AddUserSecrets<Program>(optional: true);
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
