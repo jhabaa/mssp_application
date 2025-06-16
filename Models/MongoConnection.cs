@@ -19,7 +19,9 @@ public class MongoConnection
         // This method can be used to initialize or test the MongoDB connection
         // using the configuration settings provided.
         System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
-        var dbPassword = Uri.EscapeDataString(_configuration["Mongo:db_password"]);
+
+        var dbPassword = Uri.EscapeDataString(_configuration["MONGODB_PASSWORD"]);
+
         var connectionURL = $"mongodb+srv://jhubertmillenium:{dbPassword}@heanlab.crq428n.mongodb.net/?retryWrites=true&w=majority&appName=Heanlab";
         // Here you would typically set up your MongoDB client and connect to the database
         // using the dbPassword and other connection details from the configuration.
@@ -34,7 +36,8 @@ public class MongoConnection
         _configuration = configuration;
         
 
-        var db = _client.GetDatabase(_configuration["Mongo:db_name"]);
+        var db = _client.GetDatabase(_configuration["MONGODB_NAME"]);
+
         //Loading activities from the database
         _activitiesCollection = db.GetCollection<BsonDocument>("activities");
         
