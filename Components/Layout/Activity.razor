@@ -1,11 +1,13 @@
 @using Microsoft.AspNetCore.Components
 @using mssp_application.Models
+@inject MongoConnection mongoConnection
+
 <div class="activity-section">
     <div class="activity-title">
-        <h1>@Title</h1>
+        <h1>Activités</h1>
     </div>
     <div class="cards-container">
-        @foreach (var card in Cards)
+        @foreach (var card in mongoConnection.Activities)
         {
             <div class="activity-card" style="background-image: url('@card.ImageUrl')">
                 <div class="card-overlay">
@@ -17,9 +19,12 @@
 </div>
 
 @code {
-    [Parameter]
-    public string Title { get; set; }
-
-    [Parameter]
-    public List<ActivityCard> Cards { get; set; } = new List<ActivityCard>();
+    // Load activities from MongoDB
+    protected override async Task OnInitializedAsync()
+    {
+        if (!mongoConnection.Activities.Any())
+        {
+            await mongoConnection.LoadActivitiesAsync();
+        }
+    }
 }
