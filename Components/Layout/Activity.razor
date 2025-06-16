@@ -1,0 +1,25 @@
+@using Microsoft.AspNetCore.Components
+@using mssp_application.Models
+<div class="activity-section">
+    <div class="activity-title">
+        <h1>@Title</h1>
+    </div>
+    <div class="cards-container">
+        @foreach (var card in Cards)
+        {
+            <div class="activity-card" style="background-image: url('@card.ImageUrl')">
+                <div class="card-overlay">
+                    <p class="card-info">@card.Title</p>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string Title { get; set; }
+
+    [Parameter]
+    public List<ActivityCard> Cards { get; set; } = new List<ActivityCard>();
+}
