@@ -4,7 +4,8 @@ namespace mssp_application.Models
 {
     public class ActivityCard
     {
-        public int Id { get; set; } // Unique identifier for the activity card
+
+        public MongoDB.Bson.BsonObjectId Id { get; set; } // Unique identifier for the activity card
 
         public string Title { get; set; } // Title of the activity card
 
