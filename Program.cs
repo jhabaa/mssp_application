@@ -20,7 +20,6 @@ builder.WebHost.UseUrls("http://0.0.0.0:5010");
 if(builder.Environment.IsDevelopment())
 {
     // In development, load secrets from user secrets here
-    // Load secrets from environment variables
     builder.Configuration.AddUserSecrets<Program>(optional: true);
 }
 
