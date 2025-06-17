@@ -37,7 +37,7 @@ jobs:
             echo '{
               "MONGODB_PASSWORD": $"{{ secrets.MONGODB_PASSWORD }}",
               "MONGODB_NAME": $"{{ vars.MONGODB_NAME }}"
-            }' > ./publish/appsettings.Production.json
+            }' > bin/Release/net8.0/publish/appsettings.Production.json
 
         - name: Download artifact
           uses: actions/download-artifact@v4.3.0
