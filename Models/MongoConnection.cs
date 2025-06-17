@@ -20,7 +20,13 @@ public class MongoConnection
         // using the configuration settings provided.
         System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
 
-        var dbPassword = Uri.EscapeDataString(_configuration["MONGODB_PASSWORD"]);
+        var dbPassword = _configuration["MONGODB_PASSWORD"]
+            ?? Environment.GetEnvironmentVariable("MONGODB_PASSWORD")
+            ?? throw new ArgumentNullException("MONGODB_PASSWORD", "MongoDB password is not set in configuration or environment variables.");
+
+        var dbName = _configuration["MONGODB_NAME"]
+            ?? Environment.GetEnvironmentVariable("MONGODB_NAME")
+            ?? throw new ArgumentNullException("MONGODB_NAME", "MongoDB name is not set in configuration or environment variables.");
 
         var connectionURL = $"mongodb+srv://jhubertmillenium:{dbPassword}@heanlab.crq428n.mongodb.net/?retryWrites=true&w=majority&appName=Heanlab";
         // Here you would typically set up your MongoDB client and connect to the database
@@ -36,7 +42,7 @@ public class MongoConnection
         _configuration = configuration;
         
 
-        var db = _client.GetDatabase(_configuration["MONGODB_NAME"]);
+        var db = _client.GetDatabase(dbName);
 
         //Loading activities from the database
         _activitiesCollection = db.GetCollection<BsonDocument>("activities");
