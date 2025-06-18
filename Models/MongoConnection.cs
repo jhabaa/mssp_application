@@ -18,7 +18,7 @@ public class MongoConnection
         _configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
         // This method can be used to initialize or test the MongoDB connection
         // using the configuration settings provided.
-        System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12
+        System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
         var dbPassword = _configuration["MONGODB_PASSWORD"]
             ?? Environment.GetEnvironmentVariable("MONGODB_PASSWORD")
