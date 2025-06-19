@@ -10,8 +10,11 @@
         @foreach (var card in mongoConnection.Activities)
         {
             <div class="activity-card" style="background-image: url('@card.ImageUrl')">
+                <img src="/images/img1.jpg" alt="@card.Title" class="card-icon" />
                 <div class="card-overlay">
-                    <p class="card-info">@card.Title</p>
+                    <h2 class="card-info">@card.Title</h2>
+                    <p class="card-description">@card.Description</p>
+                    <a href="@card.Link" class="card-link">En savoir plus</a>
                 </div>
             </div>
         }
