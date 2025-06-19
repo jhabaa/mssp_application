@@ -22,12 +22,53 @@ a:visited{
     font-family:Roboto, Arial, Helvetica, sans-serif;
     font-weight:100;
 }
+
+.title{
+    font-size: calc(1.5rem + 0.5vw + 5ch);
+    font-weight: bold;
+    color: var(--header-bg-secondary);
+    opacity: .5;
+    padding-left: 2vw;
+}
+
+.subtitle{
+    opacity: .8;
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+}
+.subtitle p{
+    max-width: 1000px;
+    opacity: .8;
+    font-style: italic;
+    text-align: center;
+}
+
+.grid{
+    display: flex;
+    flex-flow: row wrap;
+    max-width: 1000px;
+    padding-block: 100px;
+}
+
 main{
     z-index: 5;
 }
 section{
+    display: flex;
+    flex-flow: column nowrap;
     scrollbar-width: none;
     -ms-overflow-style: none;  /* IE and Edge */
+    padding-top: calc(10vh + 2vw);
+}
+
+.caption{
+    z-index: 2;
+    font-size: 14px;
+    opacity: .6;
 }
 
 section::-webkit-scrollbar{

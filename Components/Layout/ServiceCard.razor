@@ -1,0 +1,16 @@
+@using mssp_application.Models
+
+<div class="service-card">
+    <img src="/images/@service.ImageName" />
+    <div class="content">
+        <h2>@service.Name</h2>
+        <span class="caption">@service.Description</span>
+    </div>
+    
+</div>
+
+@code{
+    [Parameter]
+
+    required public Service service {get;set;}
+}
