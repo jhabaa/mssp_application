@@ -1,0 +1,23 @@
+@using mssp_application.Components
+@using mssp_application.Components.Layout
+@page "/services"
+@page "/nos-services"
+@inject MongoConnection mongoConnection
+<section class="services">
+    <h1 class="title">Nos services </h1>
+    <div class="subtitle">
+        <p>À la Maison de la Santé Saint Paul, nous mettons tout en œuvre pour offrir à notre communauté un accès facile, humain et professionnel à des soins de santé de qualité. Nos services sont assurés par une équipe pluridisciplinaire, engagée et à l’écoute de vos besoins.</p>
+        <div class="grid">
+            @foreach (var service in mongoConnection.Services){
+                <ServiceCard service="@service" />
+            }
+        </div>
+        
+    </div>
+</section>
+
+@code {
+    protected override async Task OnInitializedAsync(){
+        await mongoConnection.LoadServicesAsync();
+    }
+}
