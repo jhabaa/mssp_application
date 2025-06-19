@@ -8,11 +8,12 @@ using mssp_application.Models;
 
 public class MongoConnection
 {
-    private IMongoCollection<BsonDocument> _activitiesCollection;
+    private IMongoCollection<BsonDocument> _activitiesCollection, _servicesCollection;
     private readonly IConfiguration _configuration;// Default MongoDB connection URL
     public MongoClient _client { get; private set; }
 
     public List<ActivityCard> Activities { get; set; } = new List<ActivityCard>();
+    public List<Service> Services { get; set; } = new List<Service>();
     public MongoConnection(IConfiguration configuration)
     {
         _configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
@@ -40,15 +41,18 @@ public class MongoConnection
         // Create a new client and connect to the database
         _client = new MongoClient(settings);
         _configuration = configuration;
-        
+
 
         var db = _client.GetDatabase(dbName);
 
         //Loading activities from the database
         _activitiesCollection = db.GetCollection<BsonDocument>("activities");
-        
+
+        //Loading services
+        _servicesCollection = db.GetCollection<BsonDocument>("services");
+
     }
-    
+
     public async Task LoadActivitiesAsync()
     {
         // This method can be used to load activities from the MongoDB collection asynchronously.
@@ -65,6 +69,25 @@ public class MongoConnection
                 Description = doc["description"].AsString,
                 Link = doc["link"].AsString,
                 ImageUrl = doc["image"].AsString
+            });
+        }
+    }
+    public async Task LoadServicesAsync()
+    {
+        Services.Clear();
+        var filter = Builders<BsonDocument>.Filter.Empty;
+        var documents = await _servicesCollection.Find(filter).ToListAsync();
+        foreach (var doc in documents)
+        {
+            Services.Add(new Service
+            {
+                Id = doc["_id"].AsObjectId,
+                Name = doc["name"].AsString,
+                Description = doc["description"].AsString,
+                Description_full = doc["description_full"].AsString,
+                Link = doc["link"].AsString,
+                ImageName = doc["image"].AsString,
+                Images = doc["images"].AsBsonArray,
             });
         }
     }
