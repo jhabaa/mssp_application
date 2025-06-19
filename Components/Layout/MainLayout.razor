@@ -4,7 +4,7 @@
     <div class="topbar">
         <div id="nav_header">
             <div class="news" id="news_screen">
-                <div class="news-text" id="news"> Breaking news</div>
+                <div class="news-text" id="news"></div>
                 
             </div>
             <div class="nav_contact">
@@ -98,55 +98,6 @@
 </div>
 <script>
     let news_screen = document.getElementById("news");
-    const getNews = async () => {
-        const response = await fetch("https://www.who.int/api/news/healthtopics");
-        const data = await response.json();
-        console.log(data.value);
-        const news = data.value.map(item => {
-            return {
-                // Extract the relevant information from the item by removing the HTML tags
-                title: item.Tab1Summary.replace(/<[^>]+>/g, "").trim()
-            };
-        });
-        return news;
-    };
-    if (news_screen){
-        getNews().then(news => {
-            // Display the news in the news_screen element one by one
-            let index = 0;
-            const displayNews = () => {
-                if (index < news.length) {
-                    news_screen.innerHTML = news[index].title;
-                    index++;
-                    setTimeout(displayNews, 5000); // Change news every 5 seconds
-                } else {
-                    index = 0; // Reset index to loop through the news again
-                    setTimeout(displayNews, 5000);
-                }
-            };
-            displayNews();
-            moveNewsScreen(10); // Move the news screen to the left
-        }).catch(error => {
-            console.error("Error fetching news:", error);
-        })
-    }
-
-    // Async Function to move the news screen to the left acccording to a given time 
-    const moveNewsScreen = async (time) => {
-        let news_screen = document.getElementById("news");
-        let screenWidth = window.innerWidth;
-        let screenHeight = window.innerHeight;
-        let leftPosition = screenWidth;
-        let topPosition = screenHeight / 2 - news_screen.offsetHeight / 2;
-
-        news_screen.style.left = leftPosition + "px";
-
-        while (leftPosition > -news_screen.offsetWidth) {
-            leftPosition -= 1; // Move left by 1 pixel
-            news_screen.style.left = leftPosition + "px";
-            await new Promise(resolve => setTimeout(resolve, time));
-        }
-    };
 
 
     let background_compact = document.getElementById("background_compact");
